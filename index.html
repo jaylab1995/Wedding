@@ -156,6 +156,41 @@ body.blur-background::before {
 @media (max-width:720px){
   .names { font-size:36px; }
   .invitation { padding:25px 15px; }
+
+  .rsvp-section {
+  margin-top: 50px;
+  text-align: center;
+}
+
+.rsvp-section h3 {
+  font-family: 'Playfair Display', serif;
+  font-weight: 400;
+  font-size: 28px;
+  color: #b3577a;
+  margin-bottom: 15px;
+}
+
+.rsvp-message {
+  font-size: 16px;
+  color: #555;
+  line-height: 1.7;
+  max-width: 520px;
+  margin: 0 auto 25px auto;
+}
+
+.rsvp-section .button {
+  padding: 12px 28px;
+  background: #d77a9b;
+  color: #fff;
+  border-radius: 30px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: 0.3s;
+}
+
+.rsvp-section .button:hover {
+  background: #bb5f80;
+}
 }
 </style>
 </head>
@@ -193,10 +228,20 @@ body.blur-background::before {
       </div>
     </div>
 
-    <!-- RSVP Button -->
-    <a class="button" target="_blank" href="https://forms.gle/ECfnjM29DKaMd8Sd7">
-      RSVP Here
-    </a>
+    <div class="rsvp-section">
+      <h3>Kindly RSVP</h3>
+      <p class="rsvp-message">
+        Your presence at our wedding is the greatest gift of all.<br>
+        If you wish to honor us with your reply, please submit your RSVP by 
+        <strong>May 1, 2026</strong>. <br>
+        This helps us plan a beautiful celebration for everyone.
+    </p>
+
+  <!-- RSVP Form (Google Form link) -->
+  <a class="button" target="_blank" href="https://forms.gle/MYXuhzYg8pe5XvJX6">
+    RSVP Now
+  </a>
+</div>
 
     <div class="countdown" id="countdown"></div>
     <div class="hashtag">#JayFoundHisAngel</div>
