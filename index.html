@@ -272,22 +272,39 @@ envelope.addEventListener('click', ()=>{
   setTimeout(()=> envelope.remove(), 10);
 });
 
-// COUNTDOWN
 const countdownEl = document.getElementById('countdown');
+const rsvpDate = new Date("May 1, 2026 23:59:59").getTime();
 const weddingDate = new Date("June 18, 2026 09:00:00").getTime();
+
 function updateCountdown() {
   const now = new Date().getTime();
-  const distance = weddingDate - now;
-  if(distance < 0){ countdownEl.innerHTML = "The Day is Here!"; return; }
-  const days = Math.floor(distance/(1000*60*60*24));
-  const hours = Math.floor((distance%(1000*60*60*24))/(1000*60*60));
-  const minutes = Math.floor((distance%(1000*60*60))/(1000*60));
-  const seconds = Math.floor((distance%(1000*60))/1000);
-  countdownEl.innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+
+  let target, messageBefore, messageAfter;
+
+  if(now < rsvpDate){
+    target = rsvpDate;
+    messageBefore = "RSVP closes in";
+  } else if(now < weddingDate){
+    target = weddingDate;
+    messageBefore = "The wedding is in";
+  } else {
+    countdownEl.innerHTML = "The Day is Here!";
+    return;
+  }
+
+  const distance = target - now;
+  const days = Math.floor(distance / (1000*60*60*24));
+  const hours = Math.floor((distance % (1000*60*60*24)) / (1000*60*60));
+  const minutes = Math.floor((distance % (1000*60*60)) / (1000*60));
+  const seconds = Math.floor((distance % (1000*60)) / 1000);
+
+  countdownEl.innerHTML = `${messageBefore} ${days}d ${hours}h ${minutes}m ${seconds}s`;
 }
-setInterval(updateCountdown,1000);
+
+setInterval(updateCountdown, 1000);
 updateCountdown();
 
+  
 // FLOATING PETALS
 for(let i=0;i<40;i++){
   const petal=document.createElement('div');
