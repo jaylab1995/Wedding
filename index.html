@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jay & Angelica | Wedding Invitation</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Poppins:wght@300;400&family=Great+Vibes&display=swap" rel="stylesheet">
+
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body {
+  font-family:'Poppins',sans-serif;
+  background: linear-gradient(135deg, rgba(214,110,140,0.65), rgba(160,170,255,0.65)),
+              url("https://images.unsplash.com/photo-1523438885200-e635ba2c371e?auto=format&fit=crop&w=1400&q=80");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  overflow-x:hidden;
+  min-height:100vh;
+  display:flex;
+  justify-content:center;
+  padding:20px;
+  position:relative;
+}
+
+/* ================= CONTAINER ================= */
+.container {
+  width:100%;
+  max-width: 90%;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  margin-top: 10px;
+  position:relative;
+  z-index:10;
+}
+
+/* ================= ENVELOPE ================= */
+.envelope, .envelope * {
+  user-select: none;
+  outline: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+}
+.envelope {
+  width: 320px;
+  height: 200px;
+  background:#fff;
+  border-radius:16px;
+  box-shadow:0 15px 35px rgba(0,0,0,0.25);
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  font-family:'Great Vibes',cursive;
+  font-size:24px;
+  color:#b3577a;
+  cursor:pointer;
+  backface-visibility:hidden;
+  transition: transform 1s ease, opacity 1s ease;
+  z-index:2;
+  position:relative;
+}
+.envelope.open { transform: rotateX(-180deg); }
+.envelope.fly-up { transform: translateY(-250px) rotateX(-180deg); opacity:0; }
+
+/* ================= INVITATION ================= */
+.invitation, .invitation * {
+  user-select: none;
+  outline: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+}
+.invitation {
+  width: 100%;
+  max-width:1080px;
+  background: rgba(255,255,255,0.88);
+  backdrop-filter: blur(14px);
+  border-radius:24px;
+  padding:35px 25px;
+  text-align:center;
+  margin-top:10px;
+  opacity:0;
+  transform: rotateX(180deg);
+  transition: transform 1s ease, opacity 1s ease;
+  position:relative;
+  z-index:5;
+}
+.invitation.show { transform: rotateX(0deg); opacity:1; }
+
+/* ================= TEXT STYLES ================= */
+.subtitle { letter-spacing:4px; font-size:13px; color:#c06a8c; margin-bottom:30px; }
+.names { font-family:'Great Vibes',cursive; font-size:50px; color:#b3577a; line-height:1.3; margin-bottom:25px; }
+.divider { width:70px; height:1px; background:#e8cfd8; margin:35px auto; }
+.details { font-size:18px; line-height:1.9; font-family:'Great Vibes',cursive; }
+.button { margin-top:20px; display:inline-block; padding:12px 30px; background:#d77a9b; color:white; border-radius:30px; text-decoration:none; transition:.3s; }
+.button:hover { background:#bb5f80; }
+
+.section { margin-top:35px; }
+.section h3 { font-family:'Playfair Display',serif; font-weight:400; margin-bottom:18px; }
+.gift-note { font-size:16px; color:#666; line-height:1.7; max-width:520px; margin:auto; }
+.qr img { width:240px; margin-top:25px; border-radius:14px; box-shadow:0 10px 25px rgba(0,0,0,0.2); }
+.hashtag { margin-top:45px; font-family:'Great Vibes',cursive; font-size:34px; color:#b3577a; }
+.countdown { margin-top:25px; font-size:22px; color:#b3577a; font-weight:600; letter-spacing:1px; }
+
+/* ================= FLOATING PETALS ================= */
+.petal {
+  position:absolute;
+  border-radius:50%;
+  pointer-events:none;
+  animation:fall linear infinite;
+  opacity:0.8;
+}
+@keyframes fall {
+  0% { transform:translateY(-20px) rotate(0deg) scale(0.5); opacity:0; }
+  10% { opacity:1; }
+  50% { transform:translateY(50vh) rotate(180deg) scale(1); }
+  100% { transform:translateY(110vh) rotate(360deg) scale(0.5); opacity:0; }
+}
+
+/* ================= BACKGROUND BLUR ================= */
+body.blur-background::before {
+  content:"";
+  position:fixed;
+  top:0; left:0;
+  width:100%; height:100%;
+  backdrop-filter: blur(15px);
+  transition: backdrop-filter 1.2s ease;
+  z-index:1;
+}
+
+/* ================= RESPONSIVE ================= */
+@media (max-width:720px){
+  .names { font-size:36px; }
+  .invitation { padding:25px 15px; }
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+  <div class="envelope">Tap to Open Invitation</div>
+
+  <div class="invitation">
+    <div class="subtitle">WE ARE GETTING MARRIED</div>
+    <div class="names">Jay Madronio Labrador<br>&<br>Angelica Baluran Norado</div>
+    <div class="divider"></div>
+    <div class="details">
+      June 18, 2026<br>
+      9:00 AM<br>
+      Saint Anthony of Padua Parish and Shrine<br>
+      Iriga City
+    </div>
+    <a class="button" target="_blank" href="https://maps.app.goo.gl/bvKwav8ahPys1g6j8">
+      View Church Location
+    </a>
+
+    <div class="section">
+      <h3>Gift Note</h3>
+      <p class="gift-note">
+        With all that we have, we’ve been truly blessed.<br><br>
+        Your presence is present enough, but if you wish to honor us with a gift,
+        a cash blessing would be warmly appreciated.
+      </p>
+      <div class="qr">
+        <img src="qr.jpeg" alt="GCash QR Code">
+      </div>
+    </div>
+
+    <!-- RSVP Button -->
+    <a class="button" target="_blank" href="https://forms.gle/ECfnjM29DKaMd8Sd7">
+      RSVP Here
+    </a>
+
+    <div class="countdown" id="countdown"></div>
+    <div class="hashtag">#JayFoundHisAngel</div>
+  </div>
+</div>
+
+<script>
+// TAP ENVELOPE + CINEMATIC
+const envelope = document.querySelector('.envelope');
+const invitation = document.querySelector('.invitation');
+
+envelope.addEventListener('click', ()=>{
+  // envelope flips
+  envelope.classList.add('open');
+
+  // show invitation
+  invitation.classList.add('show');
+
+  // envelope flies up & fades
+  setTimeout(()=>{
+    envelope.classList.add('fly-up');
+  }, 500);
+
+  // background blur
+  document.body.classList.add('blur-background');
+
+  // remove envelope from DOM
+  setTimeout(()=> envelope.remove(), 10);
+});
+
+// COUNTDOWN
+const countdownEl = document.getElementById('countdown');
+const weddingDate = new Date("June 18, 2026 09:00:00").getTime();
+function updateCountdown() {
+  const now = new Date().getTime();
+  const distance = weddingDate - now;
+  if(distance < 0){ countdownEl.innerHTML = "The Day is Here!"; return; }
+  const days = Math.floor(distance/(1000*60*60*24));
+  const hours = Math.floor((distance%(1000*60*60*24))/(1000*60*60));
+  const minutes = Math.floor((distance%(1000*60*60))/(1000*60));
+  const seconds = Math.floor((distance%(1000*60))/1000);
+  countdownEl.innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+}
+setInterval(updateCountdown,1000);
+updateCountdown();
+
+// FLOATING PETALS
+for(let i=0;i<40;i++){
+  const petal=document.createElement('div');
+  petal.classList.add('petal');
+  petal.style.left=Math.random()*100+'vw';
+  const size = 10 + Math.random()*25;
+  petal.style.width = petal.style.height = size+'px';
+  petal.style.animationDuration = (5 + Math.random()*10)+'s';
+  petal.style.opacity = Math.random()*0.8+0.2;
+  document.body.appendChild(petal);
+}
+</script>
+
+<audio autoplay loop>
+  <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_4e6b5c54d1.mp3?filename=wedding-piano-6272.mp3" type="audio/mpeg">
+</audio>
+
+</body>
+</html>
