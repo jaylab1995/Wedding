@@ -101,7 +101,28 @@ body {
 .section { margin-top:35px; }
 .section h3 { font-family:'Playfair Display',serif; font-weight:400; margin-bottom:18px; }
 .gift-note { font-size:16px; color:#666; line-height:1.7; max-width:520px; margin:auto; }
-.qr img { width:240px; margin-top:25px; border-radius:14px; box-shadow:0 10px 25px rgba(0,0,0,0.2); }
+.qr-section {
+  margin-top: 25px;
+}
+
+.qr-desc {
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.qr-img {
+  width: 200px;  /* slightly smaller */
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+  transition: transform 0.3s ease;
+  cursor: pointer;
+}
+
+.qr-img:hover {
+  transform: scale(1.05);
+}
 .hashtag { margin-top:45px; font-family:'Great Vibes',cursive; font-size:34px; color:#b3577a; }
 .countdown { margin-top:25px; font-size:22px; color:#b3577a; font-weight:600; letter-spacing:1px; }
 
@@ -164,8 +185,11 @@ body.blur-background::before {
         Your presence is present enough, but if you wish to honor us with a gift,
         a cash blessing would be warmly appreciated.
       </p>
-      <div class="qr">
-        <img src="qr.jpeg" alt="GCash QR Code">
+      <div class="section qr-section">
+        <p class="qr-desc">Click the QR code below to download it:</p>
+        <a href="qr.jpeg" download="JayAngelica_QR">
+          <img class="qr-img" src="qr.jpeg" alt="GCash QR Code">
+        </a>
       </div>
     </div>
 
