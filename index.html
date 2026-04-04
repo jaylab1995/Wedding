@@ -8,353 +8,353 @@
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Poppins:wght@300;400&family=Great+Vibes&display=swap" rel="stylesheet">
 
 <style>
-* { margin:0; padding:0; box-sizing:border-box; }
-body {
-  font-family:'Poppins',sans-serif;
-  background: linear-gradient(135deg, rgba(214,110,140,0.65), rgba(160,170,255,0.65)),
-              url("https://images.unsplash.com/photo-1523438885200-e635ba2c371e?auto=format&fit=crop&w=1400&q=80");
-  background-size: cover;
-  background-position: center;
-  background-attachment: fixed;
-  overflow-x:hidden;
-  min-height:100vh;
-  display:flex;
-  justify-content:center;
-  padding:20px;
-  position:relative;
+*{margin:0;padding:0;box-sizing:border-box;}
+
+body{
+font-family:'Poppins',sans-serif;
+background:
+linear-gradient(135deg,rgba(214,110,140,0.65),rgba(160,170,255,0.65)),
+url("https://images.unsplash.com/photo-1523438885200-e635ba2c371e?auto=format&fit=crop&w=1400&q=80");
+background-size:cover;
+background-position:center;
+background-attachment:fixed;
+overflow-x:hidden;
+min-height:100vh;
+display:flex;
+justify-content:center;
+padding:20px;
+position:relative;
 }
 
-/* ================= CONTAINER ================= */
-.container {
-  width:100%;
-  max-width: 90%;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  margin-top: 10px;
-  position:relative;
-  z-index:10;
+/* CONTAINER */
+.container{
+width:100%;
+max-width:90%;
+display:flex;
+flex-direction:column;
+align-items:center;
+margin-top:10px;
+position:relative;
+z-index:10;
 }
 
-/* ================= ENVELOPE ================= */
-.envelope, .envelope * {
-  user-select: none;
-  outline: none;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-}
-.envelope {
-  width: 320px;
-  height: 200px;
-  background:#fff;
-  border-radius:16px;
-  box-shadow:0 15px 35px rgba(0,0,0,0.25);
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  font-family:'Great Vibes',cursive;
-  font-size:24px;
-  color:#b3577a;
-  cursor:pointer;
-  backface-visibility:hidden;
-  transition: transform 1s ease, opacity 1s ease;
-  z-index:2;
-  position:relative;
-}
-.envelope.open { transform: rotateX(-180deg); }
-.envelope.fly-up { transform: translateY(-250px) rotateX(-180deg); opacity:0; }
-
-/* ================= INVITATION ================= */
-.invitation, .invitation * {
-  user-select: none;
-  outline: none;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-}
-.invitation {
-  width: 100%;
-  max-width:1080px;
-  background: rgba(255,255,255,0.88);
-  backdrop-filter: blur(14px);
-  border-radius:24px;
-  padding:35px 25px;
-  text-align:center;
-  margin-top:10px;
-  opacity:0;
-  transform: rotateX(180deg);
-  transition: transform 1s ease, opacity 1s ease;
-  position:relative;
-  z-index:5;
-}
-.invitation.show { transform: rotateX(0deg); opacity:1; }
-
-/* ================= TEXT STYLES ================= */
-.subtitle { letter-spacing:4px; font-size:13px; color:#c06a8c; margin-bottom:30px; }
-.names { font-family:'Great Vibes',cursive; font-size:50px; color:#b3577a; line-height:1.3; margin-bottom:25px; }
-.divider { width:70px; height:1px; background:#e8cfd8; margin:35px auto; }
-.details { font-size:18px; line-height:1.9; font-family:'Great Vibes',cursive; }
-.button { margin-top:20px; display:inline-block; padding:12px 30px; background:#d77a9b; color:white; border-radius:30px; text-decoration:none; transition:.3s; }
-.button:hover { background:#bb5f80; }
-
-.section { margin-top:35px; }
-.section h3 { font-family:'Playfair Display',serif; font-weight:400; margin-bottom:18px; }
-.gift-note { font-size:16px; color:#666; line-height:1.7; max-width:520px; margin:auto; }
-.qr-section {
-  margin-top: 25px;
+/* ENVELOPE */
+.envelope,.envelope *{
+user-select:none;
+outline:none;
 }
 
-.qr-desc {
-  font-size: 14px;
-  color: #666;
-  margin-bottom: 10px;
-  text-align: center;
+.envelope{
+width:320px;
+height:200px;
+background:#fff;
+border-radius:16px;
+box-shadow:0 15px 35px rgba(0,0,0,.25);
+display:flex;
+justify-content:center;
+align-items:center;
+font-family:'Great Vibes',cursive;
+font-size:24px;
+color:#b3577a;
+cursor:pointer;
+transition:transform 1s ease,opacity 1s ease;
 }
 
-.qr-img {
-  width: 200px;  /* slightly smaller */
-  border-radius: 12px;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
-  transition: transform 0.3s ease;
-  cursor: pointer;
+.envelope.open{transform:rotateX(-180deg);}
+.envelope.fly-up{transform:translateY(-250px) rotateX(-180deg);opacity:0;}
+
+/* INVITATION */
+.invitation,.invitation *{
+user-select:none;
+outline:none;
 }
 
-.qr-img:hover {
-  transform: scale(1.05);
+.invitation{
+width:100%;
+max-width:1080px;
+background:rgba(255,255,255,.88);
+backdrop-filter:blur(14px);
+border-radius:24px;
+padding:35px 25px;
+text-align:center;
+margin-top:10px;
+opacity:0;
+transform:rotateX(180deg);
+transition:transform 1s ease,opacity 1s ease;
 }
-.hashtag { margin-top:45px; font-family:'Great Vibes',cursive; font-size:34px; color:#b3577a; }
-.countdown { margin-top:25px; font-size:22px; color:#b3577a; font-weight:600; letter-spacing:1px; }
 
-/* ================= FLOATING PETALS ================= */
-/* PETAL LAYER */
+.invitation.show{
+transform:rotateX(0);
+opacity:1;
+}
+
+/* TEXT */
+.subtitle{letter-spacing:4px;font-size:13px;color:#c06a8c;margin-bottom:30px;}
+.names{font-family:'Great Vibes',cursive;font-size:50px;color:#b3577a;margin-bottom:25px;}
+.divider{width:70px;height:1px;background:#e8cfd8;margin:35px auto;}
+.details{font-size:18px;line-height:1.9;font-family:'Great Vibes',cursive;}
+
+.button{
+margin-top:20px;
+display:inline-block;
+padding:12px 30px;
+background:#d77a9b;
+color:#fff;
+border-radius:30px;
+text-decoration:none;
+transition:.3s;
+}
+
+.button:hover{background:#bb5f80;}
+
+.section{margin-top:35px;}
+
+.gift-note{
+font-size:16px;
+color:#666;
+line-height:1.7;
+max-width:520px;
+margin:auto;
+}
+
+/* QR */
+.qr-desc{
+font-size:14px;
+color:#666;
+margin-bottom:10px;
+}
+
+.qr-img{
+width:200px;
+border-radius:12px;
+box-shadow:0 8px 20px rgba(0,0,0,.2);
+transition:.3s;
+cursor:pointer;
+}
+
+.qr-img:hover{transform:scale(1.05);}
+
+/* RSVP */
+.rsvp-section{margin-top:50px;text-align:center;}
+
+.rsvp-message{
+font-size:16px;
+color:#555;
+line-height:1.7;
+max-width:520px;
+margin:0 auto 25px;
+}
+
+.hashtag{
+margin-top:45px;
+font-family:'Great Vibes',cursive;
+font-size:34px;
+color:#b3577a;
+}
+
+.countdown{
+margin-top:25px;
+font-size:22px;
+color:#b3577a;
+font-weight:600;
+}
+
+/* PETALS */
 .petals{
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-  overflow: hidden;
-  z-index: 1;
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+pointer-events:none;
+overflow:hidden;
+z-index:1;
 }
 
-/* SINGLE PETAL */
 .petal{
-  position: absolute;
-  top: -10px;
-  width: 18px;
-  height: 18px;
-  background: radial-gradient(circle,
-      #ffd1dc,
-      #f8a5c2,
-      #cdb4db);
-  border-radius: 50% 70% 50% 70%;
-  opacity: 0.8;
-  animation: fall linear forwards;
+position:absolute;
+top:-10px;
+width:18px;
+height:18px;
+background:radial-gradient(circle,#ffd1dc,#f8a5c2,#cdb4db);
+border-radius:50% 70% 50% 70%;
+opacity:.8;
+animation:fall linear forwards;
 }
 
-/* FALL ANIMATION */
 @keyframes fall{
-  0%{
-    transform: translateY(-10vh) rotate(0deg);
-    opacity: 0;
-  }
-
-  10%{
-    opacity: 1;
-  }
-
-  100%{
-    transform: translateY(110vh) rotate(360deg);
-    opacity: 0;
-  }
+0%{transform:translateY(-10vh) rotate(0);opacity:0;}
+10%{opacity:1;}
+100%{transform:translateY(110vh) rotate(360deg);opacity:0;}
 }
 
-/* ================= BACKGROUND BLUR ================= */
-body.blur-background::before {
-  content:"";
-  position:fixed;
-  top:0; left:0;
-  width:100%; height:100%;
-  backdrop-filter: blur(15px);
-  transition: backdrop-filter 1.2s ease;
-  z-index:1;
+/* BLUR */
+body.blur-background::before{
+content:"";
+position:fixed;
+top:0;left:0;
+width:100%;
+height:100%;
+backdrop-filter:blur(15px);
+z-index:1;
 }
 
-/* ================= RESPONSIVE ================= */
-@media (max-width:720px){
-  .names { font-size:36px; }
-  .invitation { padding:25px 15px; }
-
-  .rsvp-section {
-  margin-top: 50px;
-  text-align: center;
-}
-
-.rsvp-section h3 {
-  font-family: 'Playfair Display', serif;
-  font-weight: 400;
-  font-size: 28px;
-  color: #b3577a;
-  margin-bottom: 15px;
-}
-
-.rsvp-message {
-  font-size: 16px;
-  color: #555;
-  line-height: 1.7;
-  max-width: 520px;
-  margin: 0 auto 25px auto;
-}
-
-.rsvp-section .button {
-  padding: 12px 28px;
-  background: #d77a9b;
-  color: #fff;
-  border-radius: 30px;
-  text-decoration: none;
-  font-weight: 500;
-  transition: 0.3s;
-}
-
-.rsvp-section .button:hover {
-  background: #bb5f80;
-}
+/* MOBILE */
+@media(max-width:720px){
+.names{font-size:36px;}
+.invitation{padding:25px 15px;}
 }
 </style>
 </head>
+
 <body>
+
 <div class="petals"></div>
+
 <div class="container">
-  <div class="envelope">Tap to Open Invitation</div>
 
-  <div class="invitation">
-    <div class="subtitle">WE ARE GETTING MARRIED</div>
-    <div class="names">Jay Madronio Labrador<br>&<br>Angelica Baluran Norado</div>
-    <div class="divider"></div>
-    <div class="details">
-      June 18, 2026<br>
-      9:00 AM<br>
-      Saint Anthony of Padua Parish and Shrine<br>
-      Iriga City
-    </div>
-    <a class="button" target="_blank" href="https://maps.app.goo.gl/bvKwav8ahPys1g6j8">
-      View Church Location
-    </a>
+<div class="envelope">Tap to Open Invitation</div>
 
-    <div class="section">
-      <h3>Gift Note</h3>
-      <p class="gift-note">
-        With all that we have, we’ve been truly blessed.<br><br>
-        Your presence is present enough, but if you wish to honor us with a gift,
-        a cash blessing would be warmly appreciated.
-      </p>
-      <div class="section qr-section">
-        <p class="qr-desc">Click the QR code below to download it:</p>
-        <a href="qr.jpg" download="JayAngelica_QR">
-          <img class="qr-img" src="qr.jpeg" alt="GCash QR Code">
-        </a>
-      </div>
-    </div>
+<div class="invitation">
 
-    <div class="rsvp-section">
-      <h3>Kindly RSVP</h3>
-      <p class="rsvp-message">
-        Your presence at our wedding is the greatest gift of all.<br>
-        If you wish to honor us with your reply, please submit your RSVP by 
-        <strong>May 1, 2026</strong>. <br>
-        This helps us plan a beautiful celebration for everyone.
-    </p>
+<div class="subtitle">WE ARE GETTING MARRIED</div>
 
-  <!-- RSVP Form (Google Form link) -->
-  <a class="button" target="_blank" href="https://forms.gle/MYXuhzYg8pe5XvJX6">
-    RSVP Now
-  </a>
+<div class="names">
+Jay Madronio Labrador<br>&<br>Angelica Baluran Norado
 </div>
 
-    <div class="countdown" id="countdown"></div>
-    <div class="hashtag">#JayFoundHisAngel</div>
-  </div>
+<div class="divider"></div>
+
+<div class="details">
+June 18, 2026<br>
+9:00 AM<br>
+Saint Anthony of Padua Parish and Shrine<br>
+Iriga City
 </div>
+
+<a class="button" target="_blank"
+href="https://maps.app.goo.gl/bvKwav8ahPys1g6j8">
+View Church Location
+</a>
+
+<div class="section">
+<h3>Gift Note</h3>
+
+<p class="gift-note">
+With all that we have, we’ve been truly blessed.<br><br>
+Your presence is present enough, but if you wish to honor us with a gift,
+a cash blessing would be warmly appreciated.
+</p>
+
+<p class="qr-desc">Click the QR code below to download it:</p>
+
+<a href="qr.jpg" download="JayAngelica_QR">
+<img class="qr-img" src="qr.jpeg">
+</a>
+
+</div>
+
+<div class="rsvp-section">
+<h3>Kindly RSVP</h3>
+
+<p class="rsvp-message">
+Your presence at our wedding is the greatest gift of all.<br>
+Please submit your RSVP by <strong>May 1, 2026</strong>.
+</p>
+
+<a class="button" target="_blank"
+href="https://forms.gle/MYXuhzYg8pe5XvJX6">
+RSVP Now
+</a>
+</div>
+
+<div id="countdown" class="countdown"></div>
+<div class="hashtag">#JayFoundHisAngel</div>
+
+</div>
+</div>
+
+<audio id="bgmusic" autoplay loop muted>
+<source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_4e6b5c54d1.mp3?filename=wedding-piano-6272.mp3">
+</audio>
 
 <script>
-// TAP ENVELOPE + CINEMATIC
-const envelope = document.querySelector('.envelope');
-const invitation = document.querySelector('.invitation');
 
-envelope.addEventListener('click', ()=>{
-  // envelope flips
-  envelope.classList.add('open');
+/* ENVELOPE OPEN */
+const envelope=document.querySelector('.envelope');
+const invitation=document.querySelector('.invitation');
 
-  // show invitation
-  invitation.classList.add('show');
+envelope.addEventListener('click',()=>{
+envelope.classList.add('open');
+invitation.classList.add('show');
 
-  // envelope flies up & fades
-  setTimeout(()=>{
-    envelope.classList.add('fly-up');
-  }, 500);
+setTimeout(()=>{
+envelope.classList.add('fly-up');
+},500);
 
-  // background blur
-  document.body.classList.add('blur-background');
+document.body.classList.add('blur-background');
 
-  // remove envelope from DOM
-  setTimeout(()=> envelope.remove(), 10);
+document.getElementById("bgmusic").muted=false;
+
+setTimeout(()=>envelope.remove(),10);
 });
 
-const countdownEl = document.getElementById('countdown');
-const rsvpDate = new Date("May 1, 2026 23:59:59").getTime();
-const weddingDate = new Date("June 18, 2026 09:00:00").getTime();
+/* COUNTDOWN */
+const countdownEl=document.getElementById('countdown');
 
-function updateCountdown() {
-  const now = new Date().getTime();
+const rsvpDate=new Date("May 1, 2026 23:59:59").getTime();
+const weddingDate=new Date("June 18, 2026 09:00:00").getTime();
 
-  let target, messageBefore, messageAfter;
+function updateCountdown(){
+const now=new Date().getTime();
 
-  if(now < rsvpDate){
-    target = rsvpDate;
-    messageBefore = "RSVP closes in";
-  } else if(now < weddingDate){
-    target = weddingDate;
-    messageBefore = "The wedding is in";
-  } else {
-    countdownEl.innerHTML = "The Day is Here!";
-    return;
-  }
+let target,message;
 
-  const distance = target - now;
-  const days = Math.floor(distance / (1000*60*60*24));
-  const hours = Math.floor((distance % (1000*60*60*24)) / (1000*60*60));
-  const minutes = Math.floor((distance % (1000*60*60)) / (1000*60));
-  const seconds = Math.floor((distance % (1000*60)) / 1000);
-
-  countdownEl.innerHTML = `${messageBefore} ${days}d ${hours}h ${minutes}m ${seconds}s`;
+if(now<rsvpDate){
+target=rsvpDate;
+message="RSVP closes in";
+}
+else if(now<weddingDate){
+target=weddingDate;
+message="The wedding is in";
+}
+else{
+countdownEl.innerHTML="The Day is Here!";
+return;
 }
 
-setInterval(updateCountdown, 1000);
+const distance=target-now;
+
+const d=Math.floor(distance/(1000*60*60*24));
+const h=Math.floor((distance%(1000*60*60*24))/(1000*60*60));
+const m=Math.floor((distance%(1000*60*60))/(1000*60));
+const s=Math.floor((distance%(1000*60))/1000);
+
+countdownEl.innerHTML=`${message} ${d}d ${h}h ${m}m ${s}s`;
+}
+
+setInterval(updateCountdown,1000);
 updateCountdown();
 
-  
-const petalsContainer = document.querySelector(".petals");
+/* PETALS */
+const petalsContainer=document.querySelector(".petals");
 
 function createPetal(){
-  const petal = document.createElement("div");
-  petal.classList.add("petal");
+const petal=document.createElement("div");
+petal.classList.add("petal");
 
-  petal.style.left = Math.random()*100 + "vw";
-  petal.style.animationDuration = (6 + Math.random()*6) + "s";
-  petal.style.transform = `scale(${0.6 + Math.random()})`;
+petal.style.left=Math.random()*100+"vw";
+petal.style.animationDuration=(6+Math.random()*6)+"s";
+petal.style.transform=`scale(${0.6+Math.random()})`;
 
-  petalsContainer.appendChild(petal);
+petalsContainer.appendChild(petal);
 
-  setTimeout(()=>{
-    petal.remove();
-  },12000);
+setTimeout(()=>petal.remove(),12000);
+}
+
+setInterval(createPetal,400);
+
 </script>
-
-<audio autoplay loop>
-  <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_4e6b5c54d1.mp3?filename=wedding-piano-6272.mp3" type="audio/mpeg">
-</audio>
 
 </body>
 </html>
