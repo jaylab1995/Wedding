@@ -2,11 +2,12 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Jay & Angelica Wedding Invitation</title>
     
     <!-- Premium Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Pinyon+Script&family=Cinzel:wght@400;600&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <!-- Material Icons -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
     <style>
@@ -19,7 +20,7 @@
             --strong-blue: #a6c1ee; 
         }
 
-        * { box-sizing: border-box; }
+        * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
 
         body, html {
             margin: 0;
@@ -32,6 +33,7 @@
             background-repeat: no-repeat;
             background-attachment: scroll; 
             overflow-x: hidden;
+            width: 100%;
         }
 
         /* ===== FILM GRAIN OVERLAY ===== */
@@ -44,7 +46,7 @@
             background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
         }
 
-        /* ===== 15PX FEATHERED SIDES ===== */
+        /* ===== 15PX FEATHERED SIDES (Adaptive for Mobile) ===== */
         body::before, body::after {
             content: "";
             position: fixed;
@@ -62,60 +64,59 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            padding: 40px 15px; 
+            padding: 40px 15px;
         }
 
+        /* Glassmorphism Container: 25% Opacity, Semi-Full Width */
         .glass-container {
-            background: rgba(255, 255, 255, 0.15); 
+            background: rgba(255, 255, 255, 0.25); 
             backdrop-filter: blur(8px);
             -webkit-backdrop-filter: blur(8px);
-            border-radius: 15px;
-            padding: 20px; 
+            border-radius: 20px;
+            padding: 30px 20px; 
             border: 1px solid rgba(255, 255, 255, 0.3);
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.08);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
             z-index: 10;
             width: 100%;
             max-width: 1200px; 
-            margin: 10px auto;
+            margin: 15px auto;
             text-align: center;
         }
 
+        /* Fixed Florals */
         .flower {
             position: fixed;
             z-index: 5;
             pointer-events: none;
-            width: clamp(350px, 45vw, 700px);
+            width: clamp(300px, 45vw, 750px);
+            opacity: 0.85;
         }
         .flower-tl { top: -80px; left: -80px; }
         .flower-br { bottom: -80px; right: -80px; }
 
         .tagline {
             text-transform: uppercase;
-            letter-spacing: 12px;
-            font-size: 14px;
+            letter-spacing: 8px;
+            font-size: clamp(10px, 2vw, 14px);
             color: #555;
-            margin: 30px 0;
-            font-weight: 500;
+            margin: 20px 0;
+            font-weight: 600;
         }
 
         .names {
             font-family: 'Pinyon Script', cursive;
-            font-size: clamp(80px, 14vw, 130px);
+            font-size: clamp(60px, 12vw, 130px);
             line-height: 1.1;
             color: var(--rose-accent);
-            margin: 20px 0;
-            letter-spacing: 2px;
+            margin: 15px 0;
+            letter-spacing: 1px;
         }
 
-        /* ===== COUNTDOWN STYLING ===== */
-        .countdown-section {
-            margin: 50px 0;
-        }
-
+        /* ===== UNIVERSAL COUNTDOWN GRID ===== */
         .timer-title {
             font-family: 'Cinzel', serif;
-            font-size: 20px;
-            letter-spacing: 4px;
+            font-size: clamp(14px, 3vw, 20px);
+            letter-spacing: 3px;
             color: var(--rose-accent);
             margin-bottom: 20px;
             text-transform: uppercase;
@@ -123,33 +124,34 @@
         }
 
         .timer-grid {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            flex-wrap: wrap;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+            max-width: 500px;
+            margin: 0 auto 30px;
         }
 
         .timer-unit {
-            background: rgba(255, 255, 255, 0.4);
-            padding: 15px;
-            border-radius: 10px;
-            min-width: 100px;
+            background: rgba(255, 255, 255, 0.5);
+            padding: 12px 5px;
+            border-radius: 12px;
             border: 1px solid var(--divider);
         }
 
         .timer-val {
             font-family: 'Cinzel', serif;
-            font-size: 24px;
+            font-size: clamp(18px, 4vw, 28px);
             font-weight: 600;
             color: var(--rose-accent);
             display: block;
         }
 
         .timer-label {
-            font-size: 10px;
+            font-size: clamp(8px, 1.5vw, 10px);
             text-transform: uppercase;
-            letter-spacing: 2px;
+            letter-spacing: 1px;
             color: #666;
+            font-weight: 600;
         }
 
         /* Information Strip */
@@ -159,107 +161,151 @@
             align-items: center;
             border-top: 1.5px solid var(--divider);
             border-bottom: 1.5px solid var(--divider);
-            padding: 50px 0;
-            margin: 50px 0;
+            padding: 40px 0;
+            margin: 40px 0;
         }
 
         .info-item {
             flex: 1;
             position: relative;
+            padding: 10px;
         }
 
         .info-item:not(:last-child)::after {
             content: "";
             position: absolute;
-            right: 0; top: 10%; height: 80%; width: 1px;
+            right: 0; top: 15%; height: 70%; width: 1px;
             background: var(--divider);
         }
 
         .material-icons {
             color: var(--rose-accent);
-            font-size: 48px;
-            margin-bottom: 15px;
+            font-size: clamp(32px, 6vw, 48px);
+            margin-bottom: 10px;
             display: block;
         }
 
-        .info-h { font-family: 'Cinzel', serif; font-size: 22px; letter-spacing: 2px; color: #111; font-weight: 600; }
-        .info-p { font-size: 16px; color: #444; margin-top: 12px; line-height: 1.6; }
+        .info-h { font-family: 'Cinzel', serif; font-size: clamp(14px, 3vw, 22px); letter-spacing: 1px; color: #111; font-weight: 600; }
+        .info-p { font-size: clamp(12px, 2vw, 16px); color: #444; margin-top: 8px; line-height: 1.4; }
 
-        .btn-group { margin-bottom: 70px; }
+        /* Multi-Platform Buttons */
+        .btn-group { 
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 60px;
+        }
         
         .btn {
             display: inline-flex;
             align-items: center;
-            padding: 18px 45px;
-            border-radius: 60px;
+            justify-content: center;
+            padding: 16px 30px;
+            border-radius: 50px;
             text-decoration: none;
-            font-size: 14px;
-            letter-spacing: 3px;
+            font-size: clamp(11px, 2vw, 14px);
+            letter-spacing: 2px;
             text-transform: uppercase;
-            margin: 12px;
-            transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            width: 100%;
+            max-width: 320px;
+            transition: 0.3s ease;
             font-weight: 600;
         }
 
-        .btn-ceremony { background: var(--rose-accent); color: white; box-shadow: 0 10px 25px rgba(183, 110, 121, 0.3); }
-        .btn-reception { background: var(--blue-accent); color: white; box-shadow: 0 10px 25px rgba(124, 140, 255, 0.3); }
-        .btn-rsvp { background: white; color: var(--rose-accent); border: 2px solid var(--rose-accent); box-shadow: 0 10px 25px rgba(0,0,0,0.05); }
+        .btn-ceremony { background: var(--rose-accent); color: white; box-shadow: 0 8px 20px rgba(183, 110, 121, 0.3); }
+        .btn-reception { background: var(--blue-accent); color: white; box-shadow: 0 8px 20px rgba(124, 140, 255, 0.3); }
+        .btn-rsvp { background: #fff; color: var(--rose-accent); border: 2px solid var(--rose-accent); }
 
-        .btn:hover { transform: translateY(-5px); filter: brightness(1.1); }
+        .btn:active { transform: scale(0.95); }
+
+        /* Gift Note & QR */
+        .gift-box { 
+            display: flex; 
+            flex-direction: column;
+            gap: 30px; 
+            text-align: center; 
+            margin: 0 auto 60px; 
+            max-width: 1000px; 
+            padding: 0 10px;
+        }
+
+        .gift-p { 
+            font-size: clamp(18px, 4vw, 24px); 
+            line-height: 1.8; 
+            font-style: italic; 
+            color: #222; 
+        }
+
+        .qr-code { 
+            width: 180px; 
+            padding: 12px; 
+            background: #fff; 
+            border: 1px solid #eee; 
+            box-shadow: 0 10px 25px rgba(0,0,0,0.06);
+            margin: 0 auto;
+        }
+
+        /* Sponsors Section */
+        .sponsors-flex { 
+            display: flex; 
+            flex-direction: column;
+            gap: 40px; 
+            margin-top: 20px;
+        }
+
+        .col h4 { 
+            font-family: 'Pinyon Script', cursive; 
+            font-size: clamp(48px, 8vw, 68px); 
+            color: var(--rose-accent); 
+            margin: 0 0 10px 0;
+            font-weight: 400; 
+        }
+
+        .col p { 
+            font-size: clamp(15px, 3vw, 19px); 
+            line-height: 2.2; 
+            color: #333; 
+        }
+
+        .hashtag { 
+            margin: 60px 0 30px; 
+            font-family: 'Pinyon Script', cursive; 
+            font-size: clamp(48px, 10vw, 78px); 
+            color: var(--rose-accent); 
+            opacity: 0.9; 
+        }
 
         .elegant-divider {
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 25px;
-            margin: 45px 0;
+            gap: 15px;
+            margin: 30px 0;
         }
 
         .elegant-divider::before, .elegant-divider::after {
             content: "";
-            height: 1.5px;
-            background: linear-gradient(90deg, transparent, var(--divider), transparent);
-            flex: 0.25;
+            height: 1px;
+            background: var(--divider);
+            flex: 0.2;
         }
 
-        .section-header {
-            font-family: 'Cinzel', serif;
-            font-size: 26px;
-            color: var(--rose-accent);
-            letter-spacing: 6px;
-            font-weight: 600;
-            text-transform: uppercase;
+        /* ===== MEDIA QUERIES FOR LARGER SCREENS ===== */
+        @media (min-width: 768px) {
+            .btn-group { flex-direction: row; justify-content: center; }
+            .gift-box { flex-direction: row; text-align: left; }
+            .gift-text-area { flex: 2; border-right: 2px solid var(--divider); padding-right: 40px; }
+            .sponsors-flex { flex-direction: row; justify-content: center; gap: 150px; }
+            .glass-container { padding: 50px; border-radius: 20px; width: 90%; }
         }
 
-        .gift-box { 
-            display: flex; 
-            gap: 50px; 
-            text-align: left; 
-            margin: 0 auto 80px; 
-            max-width: 1100px; 
-            align-items: center; 
-            padding: 0 30px;
-        }
-
-        .gift-text-area { flex: 2; border-right: 2px solid var(--divider); padding-right: 50px; }
-        .gift-p { font-size: 24px; line-height: 2; font-style: italic; color: #222; }
-
-        .qr-area { flex: 1; text-align: center; }
-        .qr-code { width: 210px; padding: 15px; background: #fff; border: 1px solid #eee; box-shadow: 0 15px 40px rgba(0,0,0,0.06); }
-
-        .sponsors-flex { display: flex; justify-content: center; gap: 150px; margin-top: 30px; padding: 0 20px; }
-        .col h4 { font-family: 'Pinyon Script', cursive; font-size: 68px; color: var(--rose-accent); margin-bottom: 10px; font-weight: 400; }
-        .col p { font-size: 19px; line-height: 2.5; color: #333; }
-
-        .hashtag { margin: 100px 0 50px; font-family: 'Pinyon Script', cursive; font-size: 78px; color: var(--rose-accent); opacity: 0.9; }
-
-        @media (max-width: 950px) {
-            .info-strip { flex-direction: column; gap: 40px; }
+        @media (max-width: 767px) {
+            .page-wrapper { padding: 0; } /* FULL WIDTH MOBILE */
+            .glass-container { border-radius: 0; margin: 0; border-left: none; border-right: none; }
+            .info-strip { flex-direction: column; gap: 30px; }
             .info-item::after { display: none; }
-            .gift-box { flex-direction: column; text-align: center; }
-            .gift-text-area { border-right: none; padding-right: 0; }
-            .sponsors-flex { flex-direction: column; gap: 40px; }
-            .flower { width: 300px; }
+            body::before, body::after { width: 8px; } /* Slimmer feathered sides for mobile */
         }
     </style>
 </head>
@@ -276,19 +322,17 @@
             
             <div class="names">
                 Jay Madronio Labrador
-                <span style="display:block; font-size:45px; margin:20px 0; opacity:0.6;">&</span>
+                <span style="display:block; font-size:0.4em; margin:10px 0; opacity:0.6;">&</span>
                 Angelica Baluran Norado
             </div>
 
-            <!-- WEDDING DAY COUNTDOWN -->
-            <div class="countdown-section">
-                <div class="timer-title">Countdown to Our Big Day</div>
-                <div id="wedding-timer" class="timer-grid">
-                    <div class="timer-unit"><span class="timer-val" id="w-days">00</span><span class="timer-label">Days</span></div>
-                    <div class="timer-unit"><span class="timer-val" id="w-hours">00</span><span class="timer-label">Hours</span></div>
-                    <div class="timer-unit"><span class="timer-val" id="w-mins">00</span><span class="timer-label">Mins</span></div>
-                    <div class="timer-unit"><span class="timer-val" id="w-secs">00</span><span class="timer-label">Secs</span></div>
-                </div>
+            <!-- WEDDING COUNTDOWN -->
+            <div class="timer-title">Counting Down to Our Forever</div>
+            <div id="wedding-timer" class="timer-grid">
+                <div class="timer-unit"><span class="timer-val" id="w-days">00</span><span class="timer-label">Days</span></div>
+                <div class="timer-unit"><span class="timer-val" id="w-hours">00</span><span class="timer-label">Hours</span></div>
+                <div class="timer-unit"><span class="timer-val" id="w-mins">00</span><span class="timer-label">Mins</span></div>
+                <div class="timer-unit"><span class="timer-val" id="w-secs">00</span><span class="timer-label">Secs</span></div>
             </div>
 
             <div class="info-strip">
@@ -304,51 +348,49 @@
                 </div>
                 <div class="info-item">
                     <span class="material-icons">church</span>
-                    <div class="info-h">Saint Anthony of Padua</div>
+                    <div class="info-h" style="font-size: 16px;">St. Anthony of Padua</div>
                     <div class="info-p">Parish and Shrine<br>Iriga City</div>
                 </div>
             </div>
 
             <div class="btn-group">
                 <a href="https://maps.app.goo.gl/VQ9p8ZJyQowcp2oS9" class="btn btn-ceremony" target="_blank">
-                    <span class="material-icons" style="font-size:20px; margin:0 10px 0 0; color:white;">near_me</span> View Ceremony
+                    <span class="material-icons" style="font-size:18px; margin:0 10px 0 0; color:white;">near_me</span> View Ceremony
                 </a>
                 <a href="https://maps.app.goo.gl/B81Unz1ubCGwp7x68" class="btn btn-reception" target="_blank">
-                    <span class="material-icons" style="font-size:20px; margin:0 10px 0 0; color:white;">restaurant</span> View Reception
+                    <span class="material-icons" style="font-size:18px; margin:0 10px 0 0; color:white;">restaurant</span> View Reception
                 </a>
                 <a href="https://forms.gle/urEWsoNCH4j3mUvq5" class="btn btn-rsvp" target="_blank">
-                    <span class="material-icons" style="font-size:20px; margin:0 10px 0 0; color:var(--rose-accent);">how_to_reg</span> RSVP Now
+                    <span class="material-icons" style="font-size:18px; margin:0 10px 0 0; color:var(--rose-accent);">how_to_reg</span> RSVP Now
                 </a>
             </div>
 
             <!-- RSVP COUNTDOWN -->
-            <div class="countdown-section" style="margin-bottom:80px;">
-                <div class="timer-title">RSVP Deadline: May 10, 2026</div>
-                <div id="rsvp-timer" class="timer-grid">
-                    <div class="timer-unit"><span class="timer-val" id="r-days">00</span><span class="timer-label">Days</span></div>
-                    <div class="timer-unit"><span class="timer-val" id="r-hours">00</span><span class="timer-label">Hours</span></div>
-                    <div class="timer-unit"><span class="timer-val" id="r-mins">00</span><span class="timer-label">Mins</span></div>
-                    <div class="timer-unit"><span class="timer-val" id="r-secs">00</span><span class="timer-label">Secs</span></div>
-                </div>
+            <div class="timer-title">RSVP Deadline: May 10, 2026</div>
+            <div id="rsvp-timer" class="timer-grid">
+                <div class="timer-unit"><span class="timer-val" id="r-days">00</span><span class="timer-label">Days</span></div>
+                <div class="timer-unit"><span class="timer-val" id="r-hours">00</span><span class="timer-label">Hours</span></div>
+                <div class="timer-unit"><span class="timer-val" id="r-mins">00</span><span class="timer-label">Mins</span></div>
+                <div class="timer-unit"><span class="timer-val" id="r-secs">00</span><span class="timer-label">Secs</span></div>
             </div>
 
             <div class="gift-box">
                 <div class="gift-text-area">
                     <div class="elegant-divider">
-                        <div class="section-header">Gift Note</div>
+                        <div class="section-header" style="font-family:'Cinzel', serif; font-size:22px; color:var(--rose-accent); letter-spacing:4px;">Gift Note</div>
                     </div>
                     <div class="gift-p">
                         With all that we have, we've been truly blessed. Your presence is present enough, but if you wish to honor us with a gift, a cash blessing would be warmly appreciated.
                     </div>
                 </div>
                 <div class="qr-area">
-                    <div style="font-family:'Pinyon Script', cursive; font-size:42px; color:var(--rose-accent); margin-bottom:20px;">Our GCash</div>
+                    <div style="font-family:'Pinyon Script', cursive; font-size:38px; color:var(--rose-accent); margin-bottom:15px;">Our GCash</div>
                     <img src="qr.jpg" alt="GCash QR" class="qr-code">
                 </div>
             </div>
 
             <div class="elegant-divider">
-                <div class="section-header">Principal Sponsors</div>
+                <div class="section-header" style="font-family:'Cinzel', serif; font-size:22px; color:var(--rose-accent); letter-spacing:4px;">Principal Sponsors</div>
             </div>
             
             <div class="sponsors-flex">
@@ -377,24 +419,25 @@
                 const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
                 const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-                document.getElementById(prefix + "days").innerHTML = days < 10 ? "0" + days : days;
-                document.getElementById(prefix + "hours").innerHTML = hours < 10 ? "0" + hours : hours;
-                document.getElementById(prefix + "mins").innerHTML = minutes < 10 ? "0" + minutes : minutes;
-                document.getElementById(prefix + "secs").innerHTML = seconds < 10 ? "0" + seconds : seconds;
+                const dEl = document.getElementById(prefix + "days");
+                const hEl = document.getElementById(prefix + "hours");
+                const mEl = document.getElementById(prefix + "mins");
+                const sEl = document.getElementById(prefix + "secs");
 
                 if (distance < 0) {
                     clearInterval(countdownFunc);
-                    document.getElementById(prefix + "days").innerHTML = "00";
-                    document.getElementById(prefix + "hours").innerHTML = "00";
-                    document.getElementById(prefix + "mins").innerHTML = "00";
-                    document.getElementById(prefix + "secs").innerHTML = "00";
+                    dEl.innerHTML = "00"; hEl.innerHTML = "00"; mEl.innerHTML = "00"; sEl.innerHTML = "00";
+                } else {
+                    dEl.innerHTML = days < 10 ? "0" + days : days;
+                    hEl.innerHTML = hours < 10 ? "0" + hours : hours;
+                    mEl.innerHTML = minutes < 10 ? "0" + minutes : minutes;
+                    sEl.innerHTML = seconds < 10 ? "0" + seconds : seconds;
                 }
             }, 1000);
         }
 
-        // Target Dates
         const weddingDate = new Date("June 18, 2026 09:00:00").getTime();
-        const rsvpDeadline = new Date("May 10, 2026 00:00:00").getTime();
+        const rsvpDeadline = new Date("May 5, 2026 00:00:00").getTime();
 
         startCountdown(weddingDate, "w-");
         startCountdown(rsvpDeadline, "r-");
