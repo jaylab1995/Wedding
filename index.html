@@ -21,20 +21,22 @@
         * { box-sizing: border-box; }
 
         body, html {
-            margin: 0;
-            padding: 0;
-            min-height: 100vh;
-            font-family: 'Montserrat', sans-serif;
-            
-            /* Primary Background Component */
-            background-image: url('background-pastel.png');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            background-attachment: fixed;
-            
-            overflow-x: hidden;
-        }
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    font-family: 'Montserrat', sans-serif;
+    
+    /* Primary Background Component */
+    background-image: url('background-pastel.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    
+    /* Change 'fixed' to 'scroll' to make it move with the content */
+    background-attachment: scroll; 
+    
+    overflow-x: hidden;
+}
 
         /* ===== FILM GRAIN OVERLAY ===== */
         .grain-overlay {
