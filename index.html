@@ -13,7 +13,7 @@
         /* Loading your custom font from the root GitHub folder */
         @font-face {
             font-family: 'HughIsLife';
-            src: url('Hugh is Life Personal Use .ttf') format('truetype');
+            src: url('Hugh is Life Personal Use.ttf') format('truetype');
             font-weight: normal;
             font-style: normal;
         }
@@ -109,13 +109,21 @@
             font-weight: 500;
         }
 
-        /* Custom Font for Names */
+        /* Custom Font for Names with Mobile Stacking Logic */
         .names {
             font-family: 'HughIsLife', cursive;
-            font-size: clamp(80px, 25vw, 180px);
+            font-size: clamp(60px, 15vw, 150px);
             line-height: 1;
             color: var(--rose-accent);
             margin: 10px 0 40px;
+        }
+        
+        .names span { display: inline; }
+        .names .and-text { 
+            font-size: 0.35em; 
+            margin: 0 15px; 
+            opacity: 0.7;
+            vertical-align: middle;
         }
 
         .timer-title {
@@ -239,7 +247,11 @@
             .glass-container { border-radius: 0; margin: 0; border-left: none; border-right: none; }
             .info-strip { flex-direction: column; gap: 30px; }
             .info-item::after { display: none; }
-            body::before, body::after { width: 8px; } 
+            body::before, body::after { width: 8px; }
+            
+            /* Name Stacking Logic */
+            .names span { display: block; }
+            .names .and-text { margin: 10px 0; font-size: 0.3em; }
         }
     </style>
 </head>
@@ -255,7 +267,9 @@
             <div class="tagline">You are invited to celebrate the wedding of</div>
             
             <div class="names">
-                Jay and Angelica
+                <span>Jay</span>
+                <span class="and-text">and</span>
+                <span>Angelica</span>
             </div>
 
             <!-- WEDDING COUNTDOWN -->
