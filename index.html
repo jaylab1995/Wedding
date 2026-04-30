@@ -5,7 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jay & Angelica Wedding Invitation</title>
     
-    <link href="https://fonts.googleapis.com/css2?family=Pinyon+Script&family=Cinzel:wght@400;600&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+    <!-- Premium Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Pinyon+Script&family=Cinzel:wght@400;600&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
     <style>
@@ -21,22 +22,17 @@
         * { box-sizing: border-box; }
 
         body, html {
-    margin: 0;
-    padding: 0;
-    min-height: 100vh;
-    font-family: 'Montserrat', sans-serif;
-    
-    /* Primary Background Component */
-    background-image: url('background-pastel.png');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    
-    /* Change 'fixed' to 'scroll' to make it move with the content */
-    background-attachment: scroll; 
-    
-    overflow-x: hidden;
-}
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            font-family: 'Montserrat', sans-serif;
+            background-image: url('background-pastel.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: scroll; 
+            overflow-x: hidden;
+        }
 
         /* ===== FILM GRAIN OVERLAY ===== */
         .grain-overlay {
@@ -66,34 +62,39 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            padding: 80px 8%;
-            /* Subtle white overlay to ensure text pops against background-pastel.png */
-            background: rgba(255, 255, 255, 0.2); 
+            padding: 40px 15px; 
+        }
+
+        .glass-container {
+            background: rgba(255, 255, 255, 0.25); 
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-radius: 15px;
+            padding: 20px; 
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.08);
+            z-index: 10;
+            width: 100%;
+            max-width: 1200px; 
+            margin: 20px auto;
+            text-align: center;
         }
 
         .flower {
             position: fixed;
             z-index: 5;
             pointer-events: none;
-            width: clamp(400px, 48vw, 700px);
+            width: clamp(350px, 45vw, 700px);
         }
         .flower-tl { top: -80px; left: -80px; }
         .flower-br { bottom: -80px; right: -80px; }
-
-        .content {
-            position: relative;
-            z-index: 10;
-            max-width: 1100px;
-            width: 100%;
-            text-align: center;
-        }
 
         .tagline {
             text-transform: uppercase;
             letter-spacing: 12px;
             font-size: 14px;
-            color: #777;
-            margin-bottom: 30px;
+            color: #555;
+            margin: 30px 0;
             font-weight: 500;
         }
 
@@ -102,16 +103,116 @@
             font-size: clamp(80px, 14vw, 130px);
             line-height: 1.1;
             color: var(--rose-accent);
-            margin: 15px 0;
+            margin: 20px 0;
             letter-spacing: 2px;
         }
+
+        /* ===== COUNTDOWN STYLING ===== */
+        .countdown-section {
+            margin: 50px 0;
+        }
+
+        .timer-title {
+            font-family: 'Cinzel', serif;
+            font-size: 20px;
+            letter-spacing: 4px;
+            color: var(--rose-accent);
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            font-weight: 600;
+        }
+
+        .timer-grid {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .timer-unit {
+            background: rgba(255, 255, 255, 0.4);
+            padding: 15px;
+            border-radius: 10px;
+            min-width: 100px;
+            border: 1px solid var(--divider);
+        }
+
+        .timer-val {
+            font-family: 'Cinzel', serif;
+            font-size: 24px;
+            font-weight: 600;
+            color: var(--rose-accent);
+            display: block;
+        }
+
+        .timer-label {
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #666;
+        }
+
+        /* Information Strip */
+        .info-strip {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-top: 1.5px solid var(--divider);
+            border-bottom: 1.5px solid var(--divider);
+            padding: 50px 0;
+            margin: 50px 0;
+        }
+
+        .info-item {
+            flex: 1;
+            position: relative;
+        }
+
+        .info-item:not(:last-child)::after {
+            content: "";
+            position: absolute;
+            right: 0; top: 10%; height: 80%; width: 1px;
+            background: var(--divider);
+        }
+
+        .material-icons {
+            color: var(--rose-accent);
+            font-size: 48px;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .info-h { font-family: 'Cinzel', serif; font-size: 22px; letter-spacing: 2px; color: #111; font-weight: 600; }
+        .info-p { font-size: 16px; color: #444; margin-top: 12px; line-height: 1.6; }
+
+        .btn-group { margin-bottom: 70px; }
+        
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            padding: 18px 45px;
+            border-radius: 60px;
+            text-decoration: none;
+            font-size: 14px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin: 12px;
+            transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            font-weight: 600;
+        }
+
+        .btn-ceremony { background: var(--rose-accent); color: white; box-shadow: 0 10px 25px rgba(183, 110, 121, 0.3); }
+        .btn-reception { background: var(--blue-accent); color: white; box-shadow: 0 10px 25px rgba(124, 140, 255, 0.3); }
+        .btn-rsvp { background: white; color: var(--rose-accent); border: 2px solid var(--rose-accent); box-shadow: 0 10px 25px rgba(0,0,0,0.05); }
+
+        .btn:hover { transform: translateY(-5px); filter: brightness(1.1); }
 
         .elegant-divider {
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 25px;
-            margin: 40px 0;
+            margin: 45px 0;
         }
 
         .elegant-divider::before, .elegant-divider::after {
@@ -130,141 +231,35 @@
             text-transform: uppercase;
         }
 
-        .info-strip {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            border-top: 1.5px solid var(--divider);
-            border-bottom: 1.5px solid var(--divider);
-            padding: 60px 0;
-            margin: 70px 0;
-            background: rgba(255, 255, 255, 0.4);
-        }
-
-        .info-item {
-            flex: 1;
-            position: relative;
-        }
-
-        .info-item:not(:last-child)::after {
-            content: "";
-            position: absolute;
-            right: 0; top: 10%; height: 80%; width: 1px;
-            background: var(--divider);
-        }
-
-        .material-icons {
-            color: var(--rose-accent);
-            font-size: 44px;
-            margin-bottom: 15px;
-            display: block;
-        }
-
-        .info-h { font-family: 'Cinzel', serif; font-size: 18px; letter-spacing: 2px; color: #111; font-weight: 600; }
-        .info-p { font-size: 14px; color: #555; margin-top: 10px; line-height: 1.6; }
-
-        .btn-group { margin-bottom: 100px; }
-        
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            padding: 18px 40px;
-            border-radius: 60px;
-            text-decoration: none;
-            font-size: 13px;
-            letter-spacing: 3px;
-            text-transform: uppercase;
-            margin: 15px;
-            transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            font-weight: 600;
-        }
-
-        .btn-ceremony {
-            background: var(--rose-accent);
-            color: white;
-            box-shadow: 0 10px 25px rgba(183, 110, 121, 0.3);
-        }
-
-        .btn-reception {
-            background: var(--blue-accent);
-            color: white;
-            box-shadow: 0 10px 25px rgba(124, 140, 255, 0.3);
-        }
-
-        .btn:hover { 
-            transform: translateY(-5px);
-            filter: brightness(1.1);
-        }
-
         .gift-box { 
             display: flex; 
-            gap: 80px; 
+            gap: 50px; 
             text-align: left; 
-            margin: 0 auto 100px; 
-            max-width: 1000px; 
+            margin: 0 auto 80px; 
+            max-width: 1100px; 
             align-items: center; 
+            padding: 0 30px;
         }
 
-        .gift-text-area { 
-            flex: 1.8; 
-            border-right: 2px solid var(--divider); 
-            padding-right: 80px; 
-        }
-
-        .gift-p { 
-            font-size: 22px; 
-            line-height: 2.1; 
-            font-style: italic; 
-            color: #333; 
-            font-weight: 400;
-        }
+        .gift-text-area { flex: 2; border-right: 2px solid var(--divider); padding-right: 50px; }
+        .gift-p { font-size: 24px; line-height: 2; font-style: italic; color: #222; }
 
         .qr-area { flex: 1; text-align: center; }
-        .qr-code { 
-            width: 200px; 
-            padding: 15px; 
-            background: #fff; 
-            border: 1px solid #eee; 
-            box-shadow: 0 15px 40px rgba(0,0,0,0.06);
-        }
+        .qr-code { width: 210px; padding: 15px; background: #fff; border: 1px solid #eee; box-shadow: 0 15px 40px rgba(0,0,0,0.06); }
 
-        .sponsors-flex { 
-            display: flex; 
-            justify-content: center; 
-            gap: 180px; 
-            margin-top: 30px;
-        }
+        .sponsors-flex { display: flex; justify-content: center; gap: 150px; margin-top: 30px; padding: 0 20px; }
+        .col h4 { font-family: 'Pinyon Script', cursive; font-size: 68px; color: var(--rose-accent); margin-bottom: 10px; font-weight: 400; }
+        .col p { font-size: 19px; line-height: 2.5; color: #333; }
 
-        .col h4 { 
-            font-family: 'Pinyon Script', cursive; 
-            font-size: 60px; 
-            color: var(--rose-accent); 
-            margin-bottom: 20px; 
-            font-weight: 400; 
-        }
+        .hashtag { margin: 100px 0 50px; font-family: 'Pinyon Script', cursive; font-size: 78px; color: var(--rose-accent); opacity: 0.9; }
 
-        .col p { 
-            font-size: 17px; 
-            line-height: 2.8; 
-            color: #444; 
-            font-weight: 400;
-        }
-
-        .hashtag { 
-            margin-top: 120px; 
-            font-family: 'Pinyon Script', cursive; 
-            font-size: 72px; 
-            color: var(--rose-accent); 
-            opacity: 0.9; 
-        }
-
-        @media (max-width: 850px) {
-            .info-strip { flex-direction: column; gap: 50px; }
+        @media (max-width: 950px) {
+            .info-strip { flex-direction: column; gap: 40px; }
             .info-item::after { display: none; }
             .gift-box { flex-direction: column; text-align: center; }
             .gift-text-area { border-right: none; padding-right: 0; }
-            .sponsors-flex { flex-direction: column; gap: 60px; }
-            .flower { width: 350px; }
+            .sponsors-flex { flex-direction: column; gap: 40px; }
+            .flower { width: 300px; }
         }
     </style>
 </head>
@@ -276,13 +271,24 @@
         <img src="flower-pink-tl.png" class="flower flower-tl" alt="">
         <img src="flower-blue-br.png" class="flower flower-br" alt="">
 
-        <div class="content">
+        <div class="glass-container">
             <div class="tagline">You Are Invited</div>
             
             <div class="names">
                 Jay Madronio Labrador
                 <span style="display:block; font-size:45px; margin:20px 0; opacity:0.6;">&</span>
                 Angelica Baluran Norado
+            </div>
+
+            <!-- WEDDING DAY COUNTDOWN -->
+            <div class="countdown-section">
+                <div class="timer-title">Countdown to Our Big Day</div>
+                <div id="wedding-timer" class="timer-grid">
+                    <div class="timer-unit"><span class="timer-val" id="w-days">00</span><span class="timer-label">Days</span></div>
+                    <div class="timer-unit"><span class="timer-val" id="w-hours">00</span><span class="timer-label">Hours</span></div>
+                    <div class="timer-unit"><span class="timer-val" id="w-mins">00</span><span class="timer-label">Mins</span></div>
+                    <div class="timer-unit"><span class="timer-val" id="w-secs">00</span><span class="timer-label">Secs</span></div>
+                </div>
             </div>
 
             <div class="info-strip">
@@ -305,11 +311,25 @@
 
             <div class="btn-group">
                 <a href="https://maps.app.goo.gl/VQ9p8ZJyQowcp2oS9" class="btn btn-ceremony" target="_blank">
-                    <span class="material-icons" style="font-size:18px; margin:0 10px 0 0; color:white;">near_me</span> View Ceremony
+                    <span class="material-icons" style="font-size:20px; margin:0 10px 0 0; color:white;">near_me</span> View Ceremony
                 </a>
                 <a href="https://maps.app.goo.gl/B81Unz1ubCGwp7x68" class="btn btn-reception" target="_blank">
-                    <span class="material-icons" style="font-size:18px; margin:0 10px 0 0; color:white;">restaurant</span> View Reception
+                    <span class="material-icons" style="font-size:20px; margin:0 10px 0 0; color:white;">restaurant</span> View Reception
                 </a>
+                <a href="https://forms.gle/urEWsoNCH4j3mUvq5" class="btn btn-rsvp" target="_blank">
+                    <span class="material-icons" style="font-size:20px; margin:0 10px 0 0; color:var(--rose-accent);">how_to_reg</span> RSVP Now
+                </a>
+            </div>
+
+            <!-- RSVP COUNTDOWN -->
+            <div class="countdown-section" style="margin-bottom:80px;">
+                <div class="timer-title">RSVP Deadline: May 10, 2026</div>
+                <div id="rsvp-timer" class="timer-grid">
+                    <div class="timer-unit"><span class="timer-val" id="r-days">00</span><span class="timer-label">Days</span></div>
+                    <div class="timer-unit"><span class="timer-val" id="r-hours">00</span><span class="timer-label">Hours</span></div>
+                    <div class="timer-unit"><span class="timer-val" id="r-mins">00</span><span class="timer-label">Mins</span></div>
+                    <div class="timer-unit"><span class="timer-val" id="r-secs">00</span><span class="timer-label">Secs</span></div>
+                </div>
             </div>
 
             <div class="gift-box">
@@ -322,7 +342,7 @@
                     </div>
                 </div>
                 <div class="qr-area">
-                    <div style="font-family:'Pinyon Script', cursive; font-size:36px; color:var(--rose-accent); margin-bottom:20px;">Our GCash</div>
+                    <div style="font-family:'Pinyon Script', cursive; font-size:42px; color:var(--rose-accent); margin-bottom:20px;">Our GCash</div>
                     <img src="qr.jpg" alt="GCash QR" class="qr-code">
                 </div>
             </div>
@@ -346,5 +366,38 @@
         </div>
     </div>
 
+    <script>
+        function startCountdown(targetDate, prefix) {
+            const countdownFunc = setInterval(function() {
+                const now = new Date().getTime();
+                const distance = targetDate - now;
+
+                const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+                document.getElementById(prefix + "days").innerHTML = days < 10 ? "0" + days : days;
+                document.getElementById(prefix + "hours").innerHTML = hours < 10 ? "0" + hours : hours;
+                document.getElementById(prefix + "mins").innerHTML = minutes < 10 ? "0" + minutes : minutes;
+                document.getElementById(prefix + "secs").innerHTML = seconds < 10 ? "0" + seconds : seconds;
+
+                if (distance < 0) {
+                    clearInterval(countdownFunc);
+                    document.getElementById(prefix + "days").innerHTML = "00";
+                    document.getElementById(prefix + "hours").innerHTML = "00";
+                    document.getElementById(prefix + "mins").innerHTML = "00";
+                    document.getElementById(prefix + "secs").innerHTML = "00";
+                }
+            }, 1000);
+        }
+
+        // Target Dates
+        const weddingDate = new Date("June 18, 2026 09:00:00").getTime();
+        const rsvpDeadline = new Date("May 10, 2026 00:00:00").getTime();
+
+        startCountdown(weddingDate, "w-");
+        startCountdown(rsvpDeadline, "r-");
+    </script>
 </body>
 </html>
