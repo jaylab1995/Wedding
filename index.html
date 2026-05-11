@@ -263,6 +263,33 @@
     opacity: 0.8;
     font-weight: 400;
 }
+
+        /* ================= WEDDING MOTIF ================= */
+.motif-colors{
+  display:flex;
+  justify-content:center;
+  gap:12px;
+  margin:20px 0;
+  flex-wrap:wrap;
+}
+
+.color{
+  width:40px;
+  height:40px;
+  border-radius:50%;
+  box-shadow:0 4px 10px rgba(0,0,0,0.15);
+  transition:.3s;
+}
+
+.color:hover{
+  transform:scale(1.15);
+}
+
+.motif-note{
+  font-size:14px;
+  color:#666;
+  margin-top:10px;
+}
     </style>
 </head>
 <body>
@@ -359,6 +386,30 @@
                     <p>Gina Madronio<br>Eva Madronio<br>Arlyn Ybañez</p>
                 </div>
             </div>
+
+            <!-- ================= WEDDING MOTIF ================= -->
+<div class="section">
+  <h3>Wedding Motif</h3>
+
+  <p class="gift-note">
+    We invite our beloved guests to celebrate with us in 
+    <strong>Soft Pastel Colors</strong>, reflecting the elegance,
+    romance, and warmth of our special day.
+  </p>
+
+  <div class="motif-colors">
+    <span class="color" style="background:#f8c8dc"></span>
+    <span class="color" style="background:#e6d7ff"></span>
+    <span class="color" style="background:#cfe8ff"></span>
+    <span class="color" style="background:#d8f3dc"></span>
+    <span class="color" style="background:#ffe5b4"></span>
+    <span class="color" style="background:#f5e6cc"></span>
+  </div>
+
+  <p class="motif-note">
+    Kindly avoid wearing pure white or overly dark colors.
+  </p>
+</div>
 
             <div class="hashtag">#JayFoundHisAngel</div>
 
