@@ -264,31 +264,49 @@
     font-weight: 400;
 }
 
-        /* ================= WEDDING MOTIF ================= */
-.motif-colors{
+/* ================= MOTIF SECTION ================= */
+
+.motif-section {
+  margin-top:55px;
+  text-align:center;
+}
+
+.motif-paint {
   display:flex;
   justify-content:center;
   gap:12px;
-  margin:20px 0;
-  flex-wrap:wrap;
+  margin:25px 0;
 }
 
-.color{
-  width:40px;
-  height:40px;
-  border-radius:50%;
-  box-shadow:0 4px 10px rgba(0,0,0,0.15);
-  transition:.3s;
+/* Paint Smudge Effect */
+.paint {
+  width:80px;
+  height:45px;
+  border-radius:50% 40% 60% 45%;
+  filter: blur(0.4px);
+  transform: rotate(-6deg);
+  box-shadow:0 8px 18px rgba(0,0,0,0.12);
+  animation: paintFloat 6s ease-in-out infinite;
 }
 
-.color:hover{
-  transform:scale(1.15);
+/* Pastel Colors */
+.paint.pink { background:#f6c1cc; }
+.paint.peach { background:#ffd7ba; }
+.paint.lavender { background:#dcd3ff; }
+.paint.blue { background:#cfe7ff; }
+
+/* Soft floating motion */
+@keyframes paintFloat {
+  0%,100% { transform:translateY(0) rotate(-6deg); }
+  50% { transform:translateY(-6px) rotate(-4deg); }
 }
 
-.motif-note{
-  font-size:14px;
-  color:#666;
-  margin-top:10px;
+.motif-text{
+  font-size:16px;
+  color:#555;
+  max-width:520px;
+  margin:auto;
+  line-height:1.7;
 }
     </style>
 </head>
@@ -395,20 +413,20 @@
             </div>
   
 
-  <p class="gift-note">
-    We invite our beloved guests to celebrate with us in 
-    <strong>Soft Pastel Colors</strong>, reflecting the elegance,
-    romance, and warmth of our special day.
-  </p>
 
-  <div class="motif-colors">
-    <span class="color" style="background:#f8c8dc"></span>
-    <span class="color" style="background:#e6d7ff"></span>
-    <span class="color" style="background:#cfe8ff"></span>
-    <span class="color" style="background:#d8f3dc"></span>
-    <span class="color" style="background:#ffe5b4"></span>
-    <span class="color" style="background:#f5e6cc"></span>
+  <div class="motif-paint">
+      <span class="paint pink"></span>
+      <span class="paint peach"></span>
+      <span class="paint lavender"></span>
+      <span class="paint blue"></span>
   </div>
+
+  <p class="motif-text">
+      Our celebration embraces a soft <b>Pastel Theme</b>.<br>
+      Guests are warmly encouraged to wear
+      elegant pastel shades to match the romance
+      and joy of our special day.
+  </p>
 
   <p class="motif-note">
     Kindly avoid wearing pure white or overly dark colors.
