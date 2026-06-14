@@ -420,9 +420,12 @@
                     </div>
                 </div>
                 <div class="qr-area">
-                    <div style="font-family:'Cinzel', serif; font-size:20px; color:var(--rose-accent); margin-bottom:15px; font-weight:600; text-transform:uppercase; letter-spacing:3px;">Our GCash</div>
-                    <img src="qr.jpg" alt="GCash QR" class="qr-code">
-                </div>
+    <div style="font-family:'Cinzel', serif; font-size:20px; color:var(--rose-accent); margin-bottom:15px; font-weight:600; text-transform:uppercase; letter-spacing:3px;">
+        Our GCash
+    </div>
+
+    <img src="qr.jpg" alt="GCash QR" class="qr-code" id="qrImage">
+</div>
             </div>
 
             <!-- ================= TABLE ARRANGEMENTS ================= -->
@@ -618,6 +621,13 @@ document.querySelectorAll(".table-card").forEach(card => {
 /* close on click */
 popup.addEventListener("click", () => {
     popup.style.display = "none";
+});
+
+        const qrImage = document.getElementById("qrImage");
+
+qrImage.addEventListener("click", () => {
+    img.src = "qr.jpg";
+    popup.style.display = "flex";
 });
     
     </script>
