@@ -306,6 +306,43 @@
 }
 
 
+        /* ================= TABLE ARRANGEMENTS ================= */
+
+.table-gallery{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:20px;
+    margin:35px 0 60px;
+}
+
+.table-card{
+    display:block;
+    text-decoration:none;
+    border-radius:18px;
+    overflow:hidden;
+    background:rgba(255,255,255,.4);
+    backdrop-filter:blur(5px);
+    transition:.3s ease;
+}
+
+.table-card:hover{
+    transform:translateY(-5px);
+}
+
+.table-card img{
+    width:100%;
+    display:block;
+}
+
+.table-label{
+    padding:12px;
+    text-align:center;
+    font-family:'Cinzel', serif;
+    color:var(--rose-accent);
+    letter-spacing:2px;
+    font-size:14px;
+}
+
     </style>
 </head>
 <body>
@@ -388,13 +425,29 @@
                 </div>
             </div>
 
+            <!-- ================= TABLE ARRANGEMENTS ================= -->
+
+<div class="elegant-divider">
+    <div class="section-header"
+         style="font-family:'Cinzel', serif;
+                font-size:22px;
+                color:var(--rose-accent);
+                letter-spacing:4px;">
+        Table Arrangements
+    </div>
+</div>
+
+<p class="motif-text" style="margin-bottom:30px;">
+    Kindly locate your assigned table below.
+    Tap any table card to view it in full size.
+</p>
+
+<div class="table-gallery" id="tableGallery"></div>
+
             <div class="elegant-divider">
                 <div class="section-header" style="font-family:'Cinzel', serif; font-size:22px; color:var(--rose-accent); letter-spacing:4px;">Principal Sponsors</div>
             </div>
 
-
-
-<div class="table-gallery" id="tableGallery"></div>
             
             <div class="sponsors-flex">
                 <div class="col">
@@ -508,7 +561,64 @@
 
 
         
+/* ================= TABLE ARRANGEMENTS ================= */
 
+const tableGallery = document.getElementById("tableGallery");
+
+for (let i = 1; i <= 10; i++) {
+
+    tableGallery.innerHTML += `
+        <a href="#" 
+           class="table-card"
+           data-img="${i}.png">
+
+            <img src="${i}.png" alt="Table ${i}">
+
+            <div class="table-label">
+                Table ${i}
+            </div>
+
+        </a>
+    `;
+}
+
+/* ================= SIMPLE POPUP ================= */
+
+const popup = document.createElement("div");
+popup.style.position = "fixed";
+popup.style.top = "0";
+popup.style.left = "0";
+popup.style.width = "100%";
+popup.style.height = "100%";
+popup.style.background = "rgba(0,0,0,0.8)";
+popup.style.display = "none";
+popup.style.justifyContent = "center";
+popup.style.alignItems = "center";
+popup.style.zIndex = "9999";
+
+const img = document.createElement("img");
+img.style.maxWidth = "90%";
+img.style.maxHeight = "90%";
+img.style.borderRadius = "10px";
+
+popup.appendChild(img);
+document.body.appendChild(popup);
+
+/* ================= CLICK EVENTS ================= */
+
+document.querySelectorAll(".table-card").forEach(card => {
+    card.addEventListener("click", (e) => {
+        e.preventDefault();
+
+        img.src = card.dataset.img;
+        popup.style.display = "flex";
+    });
+});
+
+/* close on click */
+popup.addEventListener("click", () => {
+    popup.style.display = "none";
+});
     
     </script>
 
